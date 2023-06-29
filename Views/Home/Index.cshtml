@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<RandomLetter>
+
+<h2>Random Text Generator</h2>
+
+@using (Html.BeginForm("RandomNumberGiveRandomText", "Home", FormMethod.Post))
+{
+    <div class="form-group mb-4">
+        @Html.Label("Number of Digits:")
+        @Html.TextBox("number", null, new { @class = "form-control", type = "number", min = "1", required = "required" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate and Save Random Texts</button>
+}
+<br /><br />
+
+
+<form method="get" action="@Url.Action("Index")">
+    <input type="text" class="form-control mb-4" name="searchString" placeholder="Ara..." value="@ViewBag.CurrentFilter" />
+    <button class="btn btn-primary" type="submit">Ara</button>
+</form>
+
+<br /><br />
+
+      <div>
+          <a href="@Url.Action("Index", new { sortBy = "words_asc" })">Kelime (A-Z)</a> |
+          <a href="@Url.Action("Index", new { sortBy = "words_desc" })">Kelime (Z-A)</a>
+      </div>
+      <br /> <br />
+ <table class="table">
+     <thead>
+         <tr>
+             <th scope="col">#</th>
+             <th scope="col">Text</th>
+             
+         </tr>
+     </thead>
+     <tbody>
+         @foreach (var item in Model)
+         {
+
+             <tr>
+                 <th scope="row">@item.Id</th>
+                 <td>@item.Words</td>
+             </tr>
+         }
+         </tbody>
+ </table>
