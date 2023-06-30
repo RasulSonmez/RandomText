@@ -54,12 +54,13 @@ namespace RandomText.Controllers
 
             List<RandomLetter> randomLetters = new List<RandomLetter>();
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 5; i++)
             {
                 string randomLetter = GenerateRandomText(number, random);
                 string countedText = GenerateCountedText(randomLetter);
-                randomLetters.Add(new RandomLetter { Words = countedText });
+                randomLetters.Add(new RandomLetter { Words = randomLetter, LetterOfCount = countedText });
             }
+
 
             _context.RandomLetters.AddRange(randomLetters);
             _context.SaveChanges();

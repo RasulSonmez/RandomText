@@ -35,17 +35,19 @@
          <tr>
              <th scope="col">#</th>
              <th scope="col">Text</th>
+             <th scope="col">Letter Of Count</th>
              
          </tr>
      </thead>
      <tbody>
          @foreach (var item in Model)
          {
-
              <tr>
                  <th scope="row">@item.Id</th>
                  <td>@item.Words</td>
+                 <td>@item.LetterOfCount</td>
              </tr>
+           
          }
-         </tbody>
+     </tbody>
  </table>
